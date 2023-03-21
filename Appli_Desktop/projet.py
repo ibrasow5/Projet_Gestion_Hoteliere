@@ -12,11 +12,7 @@ class MainWindow(Gtk.Window):
         Gtk.Window._init_(self, title="Hotel TERANGA")
         
 
-        # Création de la barre d'en-tête
-        headerbar = Gtk.HeaderBar()
-        headerbar.set_show_close_button(True)
-        headerbar.props.title = "Hotel TERANGA"
-        self.set_titlebar(headerbar)
+       
         # Définition de l'image d'arrière-plan
         image = Gtk.Image()
         image.set_from_file("C:\Users\LENOVO\Desktop\pythproject/hotel_teranga.jpeg")
@@ -26,20 +22,35 @@ class MainWindow(Gtk.Window):
         self.box = Gtk.Box(spacing=6)
         self.add(self.box)
 
-        # Création du bouton "Client"
-        self.button_client = Gtk.Button(label="Client")
-        self.button_client.connect("clicked", self.on_client_clicked)
-        headerbar.pack_start(self.button_client)
+         # Création de la barre d'en-tête
+        headerbar = Gtk.HeaderBar()
+        headerbar.set_show_close_button(True)
+        headerbar.props.title = "Hotel TERANGA"
+        self.set_titlebar(headerbar)
 
+
+        
         # Création du bouton "Chambre"
         self.button_chambre = Gtk.Button(label="Chambre")
         self.button_chambre.connect("clicked", self.on_chambre_clicked)
         headerbar.pack_start(self.button_chambre)
 
+        
+
         # Création du bouton "Réservation"
         self.button_Reservation = Gtk.Button(label="Reservation")
         self.button_Reservation.connect("clicked", self.on_reservation_clicked)
         headerbar.pack_start(self.button_Reservation)
+        
+
+       
+        # Création du bouton "Client"
+        self.button_client = Gtk.Button(label="Client")
+        self.button_client.connect("clicked", self.on_client_clicked)
+        headerbar.pack_start(self.button_client)
+
+
+        
 
         # Création du bouton "Facture"
         self.button_facture = Gtk.Button(label="Facture")
@@ -277,10 +288,10 @@ class MainWindow(Gtk.Window):
         # Création du modèle de données
         liste_clients = Gtk.ListStore(str, str, str, str, str)
         # Ajouter des données de test
-        liste_clients.append(["1", "SOW", "Ibrahima", "0123456789", "Dalifort"])
-        liste_clients.append(["2", "DIARRA", "Abdoulaye", "0123456789", "Liberté 6"])
-        liste_clients.append(["3", "SENE", "Etienne Diegane", "0123456789", "Liberté 6"])
-        liste_clients.append(["3", "DIOUM", "Babacar", "0123456789", "Yoff"])
+        liste_clients.append(["1", "Sow", "Ibrahima", "0123456789", "Dalifort"])
+        liste_clients.append(["2", "Diarra", "Abdoulaye", "0123456789", "Liberté 6"])
+        liste_clients.append(["3", "Sene", "Ethienne Diegane", "0123456789", "Liberté 6"])
+        liste_clients.append(["3", "Dioum", "Babacar", "0123456789", "Yoff"])
 
         # Création du widget TreeView
         treeview = Gtk.TreeView(model=liste_clients)
@@ -319,10 +330,10 @@ class MainWindow(Gtk.Window):
         # Création du modèle de données
         liste_clients = Gtk.ListStore(str, str, str, str, str, str, )
         # Ajouter des données de test
-        liste_clients.append(["1", "SOW", " Ibrahima", "0123456789", "Dalifort", "0451", ])
-        liste_clients.append(["2", "DIARRA", "Abdoullaye", "0123456789", "Liberté 6","0321" ])
-        liste_clients.append(["3", "SENE", "Etienne Diegane ", "0123456789", "Liberté 6", "0554" ])
-        liste_clients.append(["3", "DIOUM", "BABACAR", "0123456789", "Yoff" , "0640" ])
+        liste_clients.append(["1", "Sow", " Ibrahima", "0123456789", "Dalifort", "0451", ])
+        liste_clients.append(["2", "Diarra", "Abdoullaye", "0123456789", "Liberté 6","0321" ])
+        liste_clients.append(["3", "Sene", "Etienne Diegane ", "0123456789", "Liberté 6", "0554" ])
+        liste_clients.append(["3", "Dioum", "BABACAR", "0123456789", "Yoff" , "0640" ])
 
         # Création du widget TreeView
         treeview = Gtk.TreeView(model=liste_clients)
@@ -346,7 +357,7 @@ class MainWindow(Gtk.Window):
         Etage_colonne = Gtk.TreeViewColumn("Etage et numéro chambre", Gtk.CellRendererText(), text=5)
         treeview.append_column(Etage_colonne)
 
-        
+
         
       
 
@@ -365,15 +376,15 @@ class MainWindow(Gtk.Window):
         # Création du modèle de données
         liste_chambres = Gtk.ListStore(str, str, str, str)
         # Ajouter des données de test
-        liste_chambres.append(["00", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "économique", "50.000"])
-        liste_chambres.append(["01", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "économique", "50.000"])
-        liste_chambres.append(["02", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "économique", "50.000" ])
-        liste_chambres.append(["03", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "standing", "100.000" ])
-        liste_chambres.append(["04", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "standing", "100.000" ])
-        liste_chambres.append(["05", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "standing", "150000" ])
-        liste_chambres.append(["06", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "affaires", "150000" ])
-        liste_chambres.append(["07", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "affaires", "150000" ])
-        liste_chambres.append(["08", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "affaires", "150000" ])
+        liste_chambres.append(["00", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "économique", "75.000"])
+        liste_chambres.append(["01", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "économique", "75.000"])
+        liste_chambres.append(["02", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "économique", "75.000" ])
+        liste_chambres.append(["03", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15", "standing", "125.000" ])
+        liste_chambres.append(["04", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "standing", "125.000" ])
+        liste_chambres.append(["05", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "standing", "125000" ])
+        liste_chambres.append(["06", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "affaires", "180000" ])
+        liste_chambres.append(["07", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "affaires", "180000" ])
+        liste_chambres.append(["08", "01 02 03 04 05 06 07 08 09 10 11 12 13 14 15",  "affaires", "180000" ])
        
 
         # Création du widget TreeView
