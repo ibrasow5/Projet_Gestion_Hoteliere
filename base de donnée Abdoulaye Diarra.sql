@@ -12,7 +12,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `hotellerie`.`hotel` (
   `Nom` VARCHAR(45) NULL,
-  `Nbre_niv` INT NULL,
+  `Nbre_niveau` INT NULL,
   `Nbre_chambre` INT NULL,
   `Adresse` VARCHAR(45) NULL,
   `Tel` VARCHAR(45) NULL,
