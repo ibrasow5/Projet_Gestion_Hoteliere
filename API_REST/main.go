@@ -15,7 +15,7 @@ import (
 const port1 = ":8080"
 
 type Client struct {
-	Id_client        string `json:"id_client"`
+	Id_client        int    `json:"id_client"`
 	Prenom_client    string `json:"prenom_client"`
 	Nom_client       string `json:"nom_client"`
 	Telephone_client string `json:"telephone_client"`
@@ -37,8 +37,8 @@ type Reservation struct {
 
 type Hotel struct {
 	Nom          string `json:"nom_hotel"`
-	Nbre_niveau  string `json:"nbre_niveau"`
-	Nbre_chambre string `json:"nbre_chambre"`
+	Nbre_niveau  int    `json:"nbre_niveau"`
+	Nbre_chambre int    `json:"nbre_chambre"`
 	Adresse      string `json:"adresse"`
 	Tel          string `json:"tel"`
 	Nbre_etoiles string `json:"nbre_etoiles"`
@@ -57,9 +57,8 @@ type Service struct {
 }
 
 type Categorie struct {
-	Classe    string  `json:"classe"`
-	TypeTarif string  `json:"type_tarif"`
-	Tarif     float32 `json:"tarif"`
+	Classe     string `json:"classe"`
+	Type_tarif string `json:"type_tarif"`
 }
 
 func main() {
@@ -182,12 +181,12 @@ func main() {
 		vars := mux.Vars(r)
 		id, err := strconv.Atoi(vars["Id_client"])
 		if err != nil {
-			http.Error(w, "Invalid reservation ID", http.StatusBadRequest)
+			http.Error(w, "Invalid Client ID", http.StatusBadRequest)
 			return
 		}
 
 		// Récupérez la réservation à partir de la base de données
-		rows, err := db.Query("SELECT * FROM reservation WHERE ID_client = ?", id)
+		rows, err := db.Query("SELECT * FROM client WHERE ID_client = ?", id)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -196,7 +195,7 @@ func main() {
 
 		// Vérifiez que la réservation a été trouvée
 		if !rows.Next() {
-			http.Error(w, "Reservation not found", http.StatusNotFound)
+			http.Error(w, "Client not found", http.StatusNotFound)
 			return
 		}
 
