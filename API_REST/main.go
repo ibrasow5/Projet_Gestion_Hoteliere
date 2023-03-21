@@ -64,10 +64,10 @@ type Categorie struct {
 func main() {
 	// les données de notre serveur SQL
 	server := "localhost"
-	port := 3306
-	user := "root"
-	password := ""
-	database := "test_hotel"
+	port := 6303
+	user := "playgrounduser"
+	password := "playgroundpassword"
+	database := "hotellerie"
 
 	// Créez une chaîne de connexion
 	connString := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", user, password, server, port, database)
